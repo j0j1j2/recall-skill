@@ -1,6 +1,6 @@
 # recall-skill
 
-Claude Code 슬래시 커맨드 — 과거 작업 기록을 자연어로 조회합니다.
+A Claude Code slash command that lets you look back at your work history using natural language.
 
 ## Install
 
@@ -16,16 +16,18 @@ npx recall-skill remove
 
 ## Usage
 
-Claude Code에서:
+In Claude Code:
 
 ```
-/recall 어제
-/recall 지난주
-/recall 3월 20일
-/recall 최근 3일
+/recall yesterday
+/recall last week
+/recall March 20
+/recall last 3 days
 ```
 
-`~/.claude/history.jsonl`을 읽어 해당 기간의 작업 내용을 요약해줍니다.
+Reads `~/.claude/history.jsonl` and summarizes what you worked on during that period.
+
+Responds in the language you use most — if your history is in Korean, the summary will be in Korean. If in English, English.
 
 ## License
 

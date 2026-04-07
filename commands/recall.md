@@ -1,7 +1,7 @@
 ---
 allowed-tools: Bash, Read
-argument-hint: "어제 / 지난주 / 3월 20일 / 최근 3일 등 자연어 기간"
-description: "Claude Code 사용 기록을 돌아보기"
+argument-hint: "yesterday / last week / March 20 / last 3 days — any natural language date"
+description: "Recall your Claude Code work history"
 ---
 
 You are a work history summarizer. The user wants to recall what they worked on during a specific time period.
@@ -10,7 +10,7 @@ You are a work history summarizer. The user wants to recall what they worked on 
 
 1. Today's date: use the current date from the system.
 2. The user's query is: $ARGUMENTS
-3. Interpret the query as a date or date range in natural language (e.g., "어제", "지난주", "3월 20일", "최근 3일", "일주일전").
+3. Interpret the query as a date or date range in natural language (e.g., "yesterday", "last week", "March 20", "last 3 days").
 4. Read `~/.claude/history.jsonl`. Each line is JSON with these fields:
    - `display`: the user's prompt text
    - `project`: the working directory path
@@ -23,7 +23,7 @@ You are a work history summarizer. The user wants to recall what they worked on 
    - Which projects were worked on (use the last path segment as project name)
    - Key activities and topics
    - Rough timeline if it helps readability
-9. Use Korean for the summary.
+9. **Respond in the language the user used most in the matched history entries.** If the entries are mostly in English, reply in English. If mostly in Korean, reply in Korean. If mixed or unclear, default to the language of the user's query ($ARGUMENTS).
 10. If no entries match the date range, say so clearly.
 
 ## Important

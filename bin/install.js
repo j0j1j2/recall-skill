@@ -33,25 +33,25 @@ async function main() {
 
   p.note(
     installed
-      ? `${pc.green("●")} /recall 커맨드가 설치되어 있습니다.`
-      : `${pc.dim("○")} /recall 커맨드가 설치되어 있지 않습니다.`,
-    "상태"
+      ? `${pc.green("●")} /recall command is installed.`
+      : `${pc.dim("○")} /recall command is not installed.`,
+    "Status"
   );
 
   const choices = installed
     ? [
-        { value: "reinstall", label: "재설치", hint: "최신 버전으로 업데이트" },
-        { value: "remove", label: "삭제", hint: "/recall 커맨드 제거" },
+        { value: "reinstall", label: "Reinstall", hint: "Update to latest version" },
+        { value: "remove", label: "Remove", hint: "Uninstall /recall command" },
       ]
-    : [{ value: "install", label: "설치", hint: "/recall 커맨드 설치" }];
+    : [{ value: "install", label: "Install", hint: "Install /recall command" }];
 
   const action = await p.select({
-    message: "무엇을 할까요?",
+    message: "What would you like to do?",
     options: choices,
   });
 
   if (p.isCancel(action)) {
-    p.cancel("취소되었습니다.");
+    p.cancel("Cancelled.");
     process.exit(0);
   }
 
@@ -59,10 +59,10 @@ async function main() {
     install();
   } else if (action === "remove") {
     const confirmed = await p.confirm({
-      message: "정말 /recall 커맨드를 삭제할까요?",
+      message: "Are you sure you want to remove the /recall command?",
     });
     if (p.isCancel(confirmed) || !confirmed) {
-      p.cancel("취소되었습니다.");
+      p.cancel("Cancelled.");
       process.exit(0);
     }
     remove();
@@ -70,15 +70,15 @@ async function main() {
 
   p.note(
     [
-      `${pc.cyan("/recall 어제")}        — 어제 뭐 했는지`,
-      `${pc.cyan("/recall 지난주")}      — 지난주 작업 요약`,
-      `${pc.cyan("/recall 최근 3일")}    — 최근 3일간 기록`,
-      `${pc.cyan("/recall 3월 20일")}    — 특정 날짜 조회`,
+      `${pc.cyan("/recall yesterday")}      — what you did yesterday`,
+      `${pc.cyan("/recall last week")}      — last week's summary`,
+      `${pc.cyan("/recall last 3 days")}    — recent 3 days`,
+      `${pc.cyan("/recall March 20")}       — specific date`,
     ].join("\n"),
-    "사용법"
+    "Usage"
   );
 
-  p.outro(pc.dim("Claude Code에서 /recall 을 사용해보세요!"));
+  p.outro(pc.dim("Try /recall in Claude Code!"));
 }
 
 function install() {
@@ -86,15 +86,15 @@ function install() {
     fs.mkdirSync(TARGET_DIR, { recursive: true });
   }
   fs.copyFileSync(SOURCE, TARGET);
-  p.log.success("/recall 커맨드가 설치되었습니다.");
+  p.log.success("/recall command installed.");
 }
 
 function remove() {
   if (fs.existsSync(TARGET)) {
     fs.unlinkSync(TARGET);
-    p.log.success("/recall 커맨드가 삭제되었습니다.");
+    p.log.success("/recall command removed.");
   } else {
-    p.log.warn("이미 삭제되어 있습니다.");
+    p.log.warn("Already removed.");
   }
 }
 
