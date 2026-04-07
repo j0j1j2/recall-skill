@@ -1,6 +1,6 @@
 {
   "name": "recall-skill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Claude Code slash command to recall your work history",
   "type": "module",
   "bin": {
