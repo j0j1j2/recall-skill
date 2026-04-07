@@ -1,0 +1,30 @@
+{
+  "name": "recall-skill",
+  "version": "1.0.0",
+  "description": "Claude Code slash command to recall your work history",
+  "type": "module",
+  "bin": {
+    "recall-skill": "bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "commands/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j0j1j2/recall-skill.git"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "slash-command",
+    "history",
+    "recall"
+  ],
+  "author": "j0j1j2",
+  "license": "MIT",
+  "dependencies": {
+    "@clack/prompts": "^1.2.0",
+    "picocolors": "^1.1.1"
+  }
+}
