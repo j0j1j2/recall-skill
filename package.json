@@ -24,7 +24,7 @@
   "author": "j0j1j2",
   "license": "MIT",
   "dependencies": {
-    "@clack/prompts": "^1.2.0",
+    "@clack/prompts": "1.1.0",
     "picocolors": "^1.1.1"
   }
 }
